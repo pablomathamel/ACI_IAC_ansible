@@ -4,9 +4,9 @@
 tenant_name: ndi_prod_tn
 vrf_name: main_vrf
 ap_name: pmathame_ap
-bd_name: pmathame_bd
-subnet: 192.168.2.1
+bd_name: 192.168.4.0_24_bd
+subnet: 192.168.4.1
 mask: 24
-epg_name: pmathame_egp
+epg_name: pmathame_epg
 #contract_name: T2-T3
 #filter_name: flt
