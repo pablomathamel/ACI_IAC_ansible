@@ -78,7 +78,7 @@
 #       contract: "{{ contract_name }}"
 #       contract_type: provider
 
-# Add contract to EPG-T2 
+# Add contract to EPG-T2
 # and erroneously make it provider of contract ALLOW-ALL
 #     - name: Add contracts to EPG-T2
 #       cisco.aci.aci_epg_to_contract:
