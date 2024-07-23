@@ -3,7 +3,7 @@ dcmdr:
     apic:
       hosts:
         apic.mdr1:
-          ansible_host: 10.50.3.111
+          ansible_host: apic1-mdr1.cisco.com
           aci_username: "admin"
           aci_password: "C!sco..123!!"
           aci_validate_certs: no
