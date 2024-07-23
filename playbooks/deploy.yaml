@@ -4,5 +4,5 @@
 
 # Production tenant
 
-- name: Deploy new EPG and contract
+- name: Deploy new EPG and BD
   import_playbook: epg_con_playbook.yaml

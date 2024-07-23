@@ -22,10 +22,10 @@
     - ./epg_con_vars.yaml
 
   tasks:
-    - name: Add Tenant
-      cisco.aci.aci_tenant:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
+    # - name: Add Tenant
+    #   cisco.aci.aci_tenant:
+    #     <<: *aci_login
+    #     tenant: "{{ tenant_name }}"
 
     - name: Add BD {{ bd_name }}
       cisco.aci.aci_bd:
@@ -46,6 +46,12 @@
         mask: "{{ mask }}"
         scope: private
 
+    - name: Add AP "{{ ap_name }}"
+      cisco.aci.aci_ap:
+        <<: *aci_login
+        tenant: "{{ tenant_name }}"
+        ap: "{{ ap_name }}"
+
     - name: Add EPG "{{ epg_name }}"
       cisco.aci.aci_epg:
         <<: *aci_login
@@ -54,80 +60,80 @@
         epg: "{{ epg_name }}"
         bd: "{{ bd_name }}"
 
-    - name: Add domain binding to "{{ epg_name }}"
-      cisco.aci.aci_epg_to_domain:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
-        ap: "{{ ap_name }}"
-        epg: "{{ epg_name }}"
-        domain: PHY-USER
-        domain_type: phys
+    # - name: Add domain binding to "{{ epg_name }}"
+    #   cisco.aci.aci_epg_to_domain:
+    #     <<: *aci_login
+    #     tenant: "{{ tenant_name }}"
+    #     ap: "{{ ap_name }}"
+    #     epg: "{{ epg_name }}"
+    #     domain: PHY-USER
+    #     domain_type: phys
 
-    - name: Add contracts to "{{ epg_name }}"
-      cisco.aci.aci_epg_to_contract:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
-        ap: "{{ ap_name }}"
-        epg: "{{ epg_name }}"
-        contract: "{{ contract_name }}"
-        contract_type: provider
+#     - name: Add contracts to "{{ epg_name }}"
+#       cisco.aci.aci_epg_to_contract:
+#         <<: *aci_login
+#         tenant: "{{ tenant_name }}"
+#         ap: "{{ ap_name }}"
+#         epg: "{{ epg_name }}"
+#         contract: "{{ contract_name }}"
+#         contract_type: provider
 
-# Add contract to EPG-T2 and erroneously make it provider of contract ALLOW-ALL
-    - name: Add contracts to EPG-T2
-      cisco.aci.aci_epg_to_contract:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
-        ap: "{{ ap_name }}"
-        epg: EPG-T2
-        contract: "{{ contract_name }}"
-        contract_type: consumer
+# # Add contract to EPG-T2 and erroneously make it provider of contract ALLOW-ALL
+#     - name: Add contracts to EPG-T2
+#       cisco.aci.aci_epg_to_contract:
+#         <<: *aci_login
+#         tenant: "{{ tenant_name }}"
+#         ap: "{{ ap_name }}"
+#         epg: EPG-T2
+#         contract: "{{ contract_name }}"
+#         contract_type: consumer
 
-    - name: Add contracts to EPG-T2
-      cisco.aci.aci_epg_to_contract:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
-        ap: "{{ ap_name }}"
-        epg: EPG-T2
-        contract: ALLOW-ALL
-        contract_type: consumer
+#     - name: Add contracts to EPG-T2
+#       cisco.aci.aci_epg_to_contract:
+#         <<: *aci_login
+#         tenant: "{{ tenant_name }}"
+#         ap: "{{ ap_name }}"
+#         epg: EPG-T2
+#         contract: ALLOW-ALL
+#         contract_type: consumer
 
-    - name: Add contracts
-      cisco.aci.aci_contract:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
-        contract: "{{ contract_name }}"
-        scope: context
+#     - name: Add contracts
+#       cisco.aci.aci_contract:
+#         <<: *aci_login
+#         tenant: "{{ tenant_name }}"
+#         contract: "{{ contract_name }}"
+#         scope: context
 
-    - name: Add contract subjects
-      cisco.aci.aci_contract_subject:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
-        contract: "{{ contract_name }}"
-        subject: S1
-        reverse_filter: yes
+#     - name: Add contract subjects
+#       cisco.aci.aci_contract_subject:
+#         <<: *aci_login
+#         tenant: "{{ tenant_name }}"
+#         contract: "{{ contract_name }}"
+#         subject: S1
+#         reverse_filter: yes
 
-    - name: Bind filters to contract subjects
-      cisco.aci.aci_contract_subject_to_filter:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
-        contract: "{{ contract_name }}"
-        subject: S1
-        filter: https
+#     - name: Bind filters to contract subjects
+#       cisco.aci.aci_contract_subject_to_filter:
+#         <<: *aci_login
+#         tenant: "{{ tenant_name }}"
+#         contract: "{{ contract_name }}"
+#         subject: S1
+#         filter: https
 
-    # Contract Filters definition
+#     # Contract Filters definition
 
-    - name: Add filters
-      cisco.aci.aci_filter:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
-        filter: https
+#     - name: Add filters
+#       cisco.aci.aci_filter:
+#         <<: *aci_login
+#         tenant: "{{ tenant_name }}"
+#         filter: https
 
-    - name: Add filter entries
-      cisco.aci.aci_filter_entry:
-        <<: *aci_login
-        tenant: "{{ tenant_name }}"
-        filter: https
-        entry: https
-        ether_type: ip
-        ip_protocol: tcp
-        dst_port: 443
+#     - name: Add filter entries
+#       cisco.aci.aci_filter_entry:
+#         <<: *aci_login
+#         tenant: "{{ tenant_name }}"
+#         filter: https
+#         entry: https
+#         ether_type: ip
+#         ip_protocol: tcp
+#         dst_port: 443
