@@ -15,7 +15,7 @@
     ig_name: default
     site_name: MDR1
     git_commit_sha: "{{ lookup('ansible.builtin.env', 'GITHUB_SHA') }}"
-    
+
 
   tasks:
     - name: Print variable just in case
