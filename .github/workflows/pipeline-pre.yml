@@ -58,8 +58,7 @@ jobs:
 
       - name: Run ansible playbook dry-run
         run: |
-          export http_proxy="http://64.103.36.135:80"
-          export https_proxy="http://64.103.36.135:80"
+          export no_proxy="cisco.com"
           ansible --version
           ansible-playbook -i inventory.yaml deploy.yaml --check
           ls -al
