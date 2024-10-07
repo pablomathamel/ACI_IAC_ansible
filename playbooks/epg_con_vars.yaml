@@ -1,7 +1,7 @@
 # ACI playbook - VARS file
 ---
 
-tenant_name: TN-Production
+tenant_name: pmathame_cag_demo
 vrf_name: default
 ap_name: AP
 bd_name: BD-T3

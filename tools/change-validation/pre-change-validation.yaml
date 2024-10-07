@@ -12,8 +12,9 @@
       password: "{{ ansible_ssh_pass }}"
       validate_certs: "{{ ansible_httpapi_validate_certs }}"
       use_proxy: "{{ ansible_httpapi_use_proxy }}"
+      #login_domain: "{{ ansible_httpapi_login_domain }}"
     ig_name: default
-    site_name: ACI-BCN
+    site_name: MDR1
     git_commit_sha: "{{ lookup('ansible.builtin.env', 'GITHUB_SHA') }}"
     
 
