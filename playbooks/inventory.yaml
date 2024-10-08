@@ -3,7 +3,7 @@ dcmdr:
     apic:
       hosts:
         apic.swlab.bcn:
-          ansible_host: apic1-mdr1.cisco.com
-          aci_username: ${{ secrets.APIC_USERNAME }}
-          aci_password: ${{ secrets.APIC_PASSWORD }}
+          ansible_host: $APIC_HOSTNAME
+          aci_username: $APIC_USERNAME
+          aci_password: $APIC_PASSWORD
           aci_validate_certs: no

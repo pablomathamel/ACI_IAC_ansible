@@ -3,10 +3,10 @@ dcmdr:
     nd:
       hosts:
         nd.swlab.bcn:
-          ansible_host: nd-mdr1.cisco.com
+          ansible_host: $NDI_HOSTNAME
           #ansible_host: swlab.bcn:8083
-          ansible_user: admin
-          ansible_ssh_pass: C!sco..123!!
+          ansible_user: $NDI_USERNAME
+          ansible_ssh_pass: $NDI_PASSWORD
       vars:
         ansible_connection: ansible.netcommon.httpapi
         ansible_network_os: cisco.nd.nd
