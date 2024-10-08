@@ -2,15 +2,13 @@ dcmdr:
   children:
     nd:
       hosts:
-        nd.swlab.bcn:
-          ansible_host: $NDI_HOSTNAME
-          #ansible_host: swlab.bcn:8083
-          ansible_user: $NDI_USERNAME
-          ansible_ssh_pass: $NDI_PASSWORD
+        nd-cluster:
+          ansible_host: '${{ secrets.ND_HOST }}'
+          ansible_user: '${{ secrets.ND_USERNAME }}'
+          ansible_ssh_pass: '${{ secrets.ND_PASSWORD }}'
       vars:
         ansible_connection: ansible.netcommon.httpapi
         ansible_network_os: cisco.nd.nd
         ansible_httpapi_validate_certs: false
         ansible_httpapi_use_ssl: true
         ansible_httpapi_use_proxy: false
-        #ansible_httpapi_login_domain: dcmdr1

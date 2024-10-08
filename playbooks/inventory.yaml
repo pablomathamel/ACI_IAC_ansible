@@ -2,8 +2,8 @@ dcmdr:
   children:
     apic:
       hosts:
-        apic.swlab.bcn:
-          ansible_host: $APIC_HOSTNAME
-          aci_username: $APIC_USERNAME
-          aci_password: $APIC_PASSWORD
+        apic-controller:
+          ansible_host: '${{ secrets.APIC_HOST }}'
+          aci_username: '${{ secrets.APIC_USERNAME }}'
+          aci_password: '${{ secrets.APIC_PASSWORD }}'
           aci_validate_certs: no
