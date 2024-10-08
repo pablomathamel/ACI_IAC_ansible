@@ -3,7 +3,7 @@ dcmdr:
     apic:
       hosts:
         apic-controller:
-          ansible_host: '${{ secrets.APIC_HOST }}'
-          aci_username: '${{ secrets.APIC_USERNAME }}'
-          aci_password: '${{ secrets.APIC_PASSWORD }}'
+          ansible_host: $APIC_HOST
+          aci_username: $APIC_USERNAME
+          aci_password: $APIC_PASSWORD
           aci_validate_certs: no

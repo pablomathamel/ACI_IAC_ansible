@@ -13,6 +13,12 @@ on:
 # Environment variables
 env:
   PYTHONWARNINGS: "ignore:Unverified HTTPS request"
+  APIC_HOST: ${{ secrets.APIC_HOST }}
+  APIC_USERNAME: ${{ secrets.APIC_USERNAME }}
+  APIC_PASSWORD: ${{ secrets.APIC_PASSWORD }}
+  ND_HOST: ${{ secrets.ND_HOST }}
+  ND_USERNAME: ${{ secrets.ND_USERNAME }}
+  ND_PASSWORD: ${{ secrets.ND_PASSWORD }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

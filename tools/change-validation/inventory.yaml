@@ -3,9 +3,9 @@ dcmdr:
     nd:
       hosts:
         nd-cluster:
-          ansible_host: '${{ secrets.ND_HOST }}'
-          ansible_user: '${{ secrets.ND_USERNAME }}'
-          ansible_ssh_pass: '${{ secrets.ND_PASSWORD }}'
+          ansible_host: $ND_HOST
+          ansible_user: $ND_USERNAME
+          ansible_ssh_pass: $ND_PASSWORD
       vars:
         ansible_connection: ansible.netcommon.httpapi
         ansible_network_os: cisco.nd.nd
