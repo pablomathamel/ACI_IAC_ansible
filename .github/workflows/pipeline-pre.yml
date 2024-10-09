@@ -64,6 +64,12 @@ jobs:
 
       - name: Run ansible playbook dry-run
         run: |
+          echo $APIC_HOST
+          echo $APIC_USERNAME
+          echo $APIC_PASSWORD
+          echo $ND_HOST 
+          echo $ND_USERNAME 
+          echo $ND_PASSWORD 
           export no_proxy="cisco.com"
           ansible --version
           ansible-playbook -i inventory.yaml deploy.yaml --check
